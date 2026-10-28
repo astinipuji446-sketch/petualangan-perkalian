@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Petualangan Perkalian | Matematika Kelas 3</title>
+<style>
+:root{--blue:#4f76e8;--blue2:#eaf0ff;--yellow:#ffda70;--purple:#8a72e8;--green:#35b98a;--ink:#26345b;--muted:#697795;--paper:#fff;--bg:#f2f6ff;--pink:#ffe8f0}
+*{box-sizing:border-box}
+body{margin:0;background:#e9efff;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink)}
+button{font:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid #f4b83f;outline-offset:3px}
+.site{max-width:1000px;margin:0 auto;background:var(--bg);min-height:100vh;overflow:hidden}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 22px;background:#fff;position:sticky;top:0;z-index:10;box-shadow:0 3px 12px #293d6a10}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:17px}
+.brand-icon{width:42px;height:42px;border-radius:14px;background:var(--yellow);display:grid;place-items:center;font-size:24px}
+.menu{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.nav{border:0;background:transparent;padding:10px 12px;border-radius:12px;color:var(--muted);font-weight:800;font-size:13px}
+.nav.active,.nav:hover{background:var(--blue2);color:var(--blue)}
+main{padding:22px}
+.page{display:none;animation:appear .25s ease}
+.page.active{display:block}
+@keyframes appear{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;padding:clamp(24px,5vw,48px);border-radius:28px;background:linear-gradient(135deg,#608af3,#8c75e9);color:white;position:relative;overflow:hidden}
+.eyebrow{display:inline-block;background:#ffffff2e;padding:7px 12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:.4px}
+.hero h1{font-size:clamp(32px,5.5vw,54px);line-height:1.08;margin:15px 0}
+.hero p{line-height:1.75;color:#f3f5ff;max-width:490px}
+.hero-art{min-height:210px;display:grid;place-items:center;position:relative}
+.planet{width:190px;height:190px;border-radius:50%;background:#ffffff26;display:grid;place-items:center;font-size:105px;position:relative}
+.float{position:absolute;background:white;color:var(--ink);border-radius:16px;padding:11px 14px;font-size:20px;font-weight:900;box-shadow:0 8px 18px #23366b20}
+.f1{top:13px;left:0;transform:rotate(-8deg)}.f2{right:0;bottom:20px;transform:rotate(7deg)}.f3{right:5px;top:8px;font-size:24px;background:var(--yellow)}
+.btn{border:0;border-radius:14px;padding:13px 18px;font-weight:900;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:var(--yellow);color:#57461b;box-shadow:0 4px 0 #e9bb4e}
+.btn.blue{background:var(--blue);color:white;box-shadow:0 4px 0 #3458bd}
+.btn.light{background:white;color:var(--blue);border:2px solid #dce5ff}
+.btn.full{width:100%}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 2px 14px}
+.section-head h2{margin:0;font-size:clamp(22px,3vw,29px)}
+.section-head p{margin:5px 0 0;color:var(--muted);font-size:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:white;border:1px solid #e5ebfb;border-radius:20px;padding:20px;box-shadow:0 5px 15px #293d6a08}
+.card .emoji{font-size:36px;margin-bottom:10px}
+.card h3{margin:4px 0 8px;font-size:18px}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}
+.card .small-btn{margin-top:15px;border:0;background:var(--blue2);color:var(--blue);border-radius:10px;padding:10px 12px;font-weight:900}
+.tipbar{margin-top:16px;background:#fff3cd;border-radius:18px;padding:16px;display:flex;gap:12px;align-items:flex-start;line-height:1.6;font-size:14px}
+.page-title{padding:24px;border-radius:23px;background:linear-gradient(120deg,#fff,#edf2ff);border:1px solid #e0e8ff;margin-bottom:18px}
+.page-title .kicker{color:var(--blue);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1px}
+.page-title h1{margin:8px 0;font-size:clamp(27px,4vw,38px)}
+.page-title p{margin:0;color:var(--muted);line-height:1.7}
+.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.lesson{background:#fff;border-radius:20px;padding:22px;border:1px solid #e4eafa}
+.lesson h3{margin-top:0}
+.example{background:#f0f5ff;padding:16px;border-radius:15px;margin-top:12px;text-align:center}
+.math{font-size:32px;color:var(--blue);font-weight:900;letter-spacing:1px}
+.groups{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:15px 0}
+.group{padding:10px 12px;background:white;border:2px solid #dfe7ff;border-radius:13px;font-size:24px;min-width:65px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.step{padding:14px;border-radius:14px;background:#f5f7ff;text-align:center;font-size:14px;line-height:1.5}
+.step strong{display:block;font-size:21px;color:var(--purple);margin-bottom:5px}
+.table-wrap{overflow-x:auto;background:white;border-radius:18px;padding:12px;border:1px solid #e4eafa;margin-top:16px}
+table{border-collapse:collapse;width:100%;min-width:290px}
+td,th{padding:11px;text-align:center;border-bottom:1px solid #edf0fa}
+th{color:var(--blue);background:#f4f7ff}
+tr:last-child td{border-bottom:0}
+.game-shell{max-width:720px;margin:auto}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}
+.stat{background:white;border:1px solid #e4eafa;padding:13px 5px;text-align:center;border-radius:15px}
+.stat span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}
+.stat strong{font-size:23px;color:var(--blue)}
+.game-card{background:white;padding:clamp(17px,4vw,28px);border-radius:23px;border:1px solid #e4eafa}
+.levels{display:flex;gap:9px;margin:14px 0}
+.level{flex:1;border:2px solid #dce5f8;background:white;border-radius:13px;padding:12px 5px;font-weight:900;color:var(--ink)}
+.level.active{background:var(--blue2);border-color:var(--blue);color:var(--blue)}
+.progress-row{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:13px;margin-bottom:8px}
+.track{height:10px;background:#e9eef9;border-radius:20px;overflow:hidden;margin-bottom:20px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#39c89b,#8bdc9c);transition:width .2s}
+.question{text-align:center;padding:8px 0 16px}
+.equation{font-size:clamp(44px,10vw,65px);font-weight:900;color:var(--blue);display:block;margin:12px 0}
+.answers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.answer{background:#f3f6ff;border:2px solid #dce5f8;border-radius:14px;min-height:57px;font-size:23px;font-weight:900;color:var(--ink)}
+.answer.correct{background:#d9f8e9;border-color:#35b98a;color:#167b59}
+.answer.wrong{background:#ffe4e4;border-color:#e87878;color:#b53e3e}
+.answer:disabled{cursor:default}
+.feedback{min-height:48px;padding:12px 4px 0;text-align:center;font-weight:900;font-size:14px;line-height:1.5}
+.hidden{display:none!important}
+.result{text-align:center;padding:18px 0}
+.result .trophy{font-size:65px}
+.result h2{margin:7px 0}
+.final-score{font-size:45px;color:var(--blue);font-weight:900;margin:10px}
+.result p{color:var(--muted);line-height:1.6}
+.check-list{list-style:none;padding:0;line-height:2}
+.check-list li:before{content:"✓";display:inline-grid;place-items:center;background:#d9f8e9;color:#167b59;width:24px;height:24px;border-radius:50%;font-weight:900;margin-right:9px}
+footer{text-align:center;padding:24px;color:var(--muted);font-size:12px;line-height:1.7}
+@media(max-width:680px){.topbar{align-items:flex-start;flex-direction:column;padding:12px 14px}.menu{justify-content:flex-start;width:100%}.nav{padding:9px;font-size:12px}main{padding:13px}.hero{grid-template-columns:1fr;text-align:center;padding:25px 18px}.hero p{margin-left:auto;margin-right:auto}.hero-art{min-height:160px}.planet{width:145px;height:145px;font-size:80px}.f1{left:7%}.f2{right:5%}.grid3{grid-template-columns:1fr}.lesson-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.card{padding:17px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="site" id="app">
+<header class="topbar">
+  <div class="brand"><div class="brand-icon">🚀</div><div>Petualangan Perkalian<br><span style="font-size:11px;color:#7b86a2;font-weight:700">Matematika Kelas 3 SD</span></div></div>
+  <nav class="menu" aria-label="Navigasi utama">
+    <button class="nav active" data-page="home">🏠 Beranda</button>
+    <button class="nav" data-page="materi">📚 Materi</button>
+    <button class="nav" data-page="game">🎮 Tantangan</button>
+    <button class="nav" data-page="panduan">🌟 Panduan</button>
+  </nav>
+</header>
+<main>
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">✨ BELAJAR SAMBIL BERMAIN</span>
+      <h1>Halo, Jagoan Angka! 🌈</h1>
+      <p>Selamat datang di Petualangan Perkalian! Di sini kamu bisa belajar perkalian dengan cara yang mudah, seru, dan penuh tantangan. Siapkan semangatmu!</p>
+      <button class="btn primary" data-go="materi">📚 Mulai Belajar</button>
+      <button class="btn light" data-go="game" style="margin:8px 0 0 5px">🎮 Ayo Bermain!</button>
+    </div>
+    <div class="hero-art" aria-hidden="true"><div class="planet">🧑‍🚀</div><div class="float f1">3 × 4 = ?</div><div class="float f2">⭐ +10</div><div class="float f3">✦</div></div>
+  </div>
+  <div class="section-head"><div><h2>Petualanganmu dimulai di sini!</h2><p>Pilih kegiatan yang ingin kamu jelajahi.</p></div></div>
+  <div class="grid3">
+    <article class="card"><div class="emoji">📖</div><h3>Kenali Perkalian</h3><p>Pahami arti perkalian melalui penjumlahan berulang dan kelompok benda.</p><button class="small-btn" data-go="materi">Buka Materi →</button></article>
+    <article class="card"><div class="emoji">🧩</div><h3>Latihan Seru</h3><p>Asah kemampuanmu dengan soal perkalian dan pilihan jawaban.</p><button class="small-btn" data-go="game">Mulai Latihan →</button></article>
+    <article class="card"><div class="emoji">🏆</div><h3>Raih Bintang</h3><p>Jawab dengan benar untuk mengumpulkan poin dan melihat hasilmu.</p><button class="small-btn" data-go="game">Ke Tantangan →</button></article>
+  </div>
+  <div class="tipbar"><span style="font-size:26px">💡</span><div><strong>Ingat, ya!</strong><br>Perkalian adalah penjumlahan berulang. Kamu boleh belajar pelan-pelan. Yang penting berani mencoba dan terus berlatih!</div></div>
+</section>
+
+<section class="page" id="page-materi">
+  <div class="page-title"><div class="kicker">📚 Misi 1 · Belajar</div><h1>Yuk, Kenalan dengan Perkalian!</h1><p>Perkalian membantu kita menghitung jumlah benda dengan lebih cepat. Mari lihat contoh berikut!</p></div>
+  <div class="lesson-grid">
+    <article class="lesson"><h3>🌱 Apa itu perkalian?</h3><p>Perkalian adalah penjumlahan berulang dari bilangan yang sama.</p><div class="example"><div class="groups"><div class="group">🍎🍎</div><div class="group">🍎🍎</div><div class="group">🍎🍎</div></div><div class="math">3 × 2 = 6</div><p>3 kelompok, setiap kelompok berisi 2 apel.</p></div></article>
+    <article class="lesson"><h3>🔍 Cara menghitung</h3><p>Hitung jumlah benda pada setiap kelompok, lalu jumlahkan semuanya.</p><div class="example"><div class="math">2 + 2 + 2 = 6</div><p>Sama artinya dengan <strong>3 × 2 = 6</strong>.</p></div></article>
+    <article class="lesson"><h3>🎈 Contoh dalam kehidupan</h3><p>Ada 4 piring. Setiap piring berisi 3 kue. Berapa jumlah seluruh kue?</p><div class="example"><div class="groups"><div class="group">🍪🍪🍪</div><div class="group">🍪🍪🍪</div><div class="group">🍪🍪🍪</div><div class="group">🍪🍪🍪</div></div><div class="math">4 × 3 = 12</div></div></article>
+    <article class="lesson"><h3>⭐ Trik mengingat</h3><ul class="check-list"><li>Perhatikan angka pertama.</li><li>Kalikan dengan angka kedua.</li><li>Periksa kembali jawabanmu.</li></ul><p>Contoh: 5 × 2 berarti 2 + 2 + 2 + 2 + 2 = 10.</p></article>
+  </div>
+  <div class="section-head"><div><h2>Tabel Perkalian 1–10</h2><p>Gunakan tabel ini untuk membantu latihanmu.</p></div></div>
+  <div class="table-wrap"><table id="times-table" aria-label="Tabel perkalian"><thead><tr><th>×</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody></tbody></table></div>
+  <div class="tipbar"><span style="font-size:25px">🚀</span><div><strong>Sudah paham?</strong><br>Sekarang waktunya menguji kemampuanmu. Berani mencoba 10 soal perkalian?</div></div>
+  <p style="text-align:center;margin-top:18px"><button class="btn blue" data-go="game">Ayo ke Tantangan! →</button></p>
+</section>
+
+<section class="page" id="page-game">
+  <div class="page-title"><div class="kicker">🎮 Misi 2 · Bermain</div><h1>Tantangan Perkalian</h1><p>Jawab 10 soal. Setiap jawaban benar bernilai 10 poin. Pilih tingkat yang sesuai dan lakukan yang terbaik!</p></div>
+  <div class="game-shell">
+    <div class="stats">
+      <div class="stat"><span>⭐ Poin Ronde</span><strong id="score">0</strong></div>
+      <div class="stat"><span>📝 Nomor Soal</span><strong id="number">0/10</strong></div>
+      <div class="stat"><span>🎯 Benar</span><strong id="correct">0</strong></div>
+    </div>
+    <div class="game-card" id="game-start">
+      <div style="text-align:center;font-size:56px">🧠 ✨ 🎯</div>
+      <h2 style="text-align:center;margin-bottom:6px">Pilih Tingkat Tantangan</h2>
+      <p style="text-align:center;color:var(--muted);line-height:1.6">Tenang saja, setiap jawaban adalah kesempatan untuk belajar!</p>
+      <div class="levels"><button class="level active" data-max="5">🌱 Mudah<br>Perkalian 1–5</button><button class="level" data-max="10">🌟 Sedang<br>Perkalian 1–10</button></div>
+      <button class="btn blue full" id="start-game">🚀 Mulai Tantangan</button>
+      <div class="tipbar"><span>💡</span><div>Jawaban benar menambah 10 poin. Baca soal dengan teliti sebelum memilih.</div></div>
+    </div>
+    <div class="game-card hidden" id="game-play">
+      <div class="progress-row"><span id="progress-label">Soal 1 dari 10</span><span id="percent">10%</span></div>
+      <div class="track"><div class="bar" id="bar"></div></div>
+      <div class="question"><h3>Berapa hasil perkalian ini? 🤔</h3><span class="equation" id="equation">3 × 4</span><p style="color:var(--muted)">Pilih satu jawaban yang benar!</p></div>
+      <div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div>
+      <button class="btn blue full hidden" id="next-question">Soal Berikutnya →</button>
+    </div>
+    <div class="game-card hidden" id="game-result" aria-live="polite">
+      <div class="result"><div class="trophy" id="trophy">🏆</div><h2 id="result-title">Misi Selesai!</h2><p id="result-message"></p><div class="final-score" id="final-score">0/100</div><p id="result-correct"></p><button class="btn blue full" id="play-again">🔄 Main Lagi</button><button class="btn light full" style="margin-top:10px" data-go="materi">📚 Pelajari Materi Lagi</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="page-panduan">
+  <div class="page-title"><div class="kicker">🌟 Misi 3 · Kenali Website</div><h1>Panduan Petualang</h1><p>Ikuti langkah sederhana ini agar belajarmu makin seru.</p></div>
+  <div class="grid3">
+    <article class="card"><div class="emoji">1️⃣</div><h3>Baca Materi</h3><p>Pelajari arti perkalian dan lihat contoh kelompok benda sebelum bermain.</p></article>
+    <article class="card"><div class="emoji">2️⃣</div><h3>Pilih Tantangan</h3><p>Pilih tingkat mudah atau sedang. Baca soal, lalu tekan jawaban yang menurutmu benar.</p></article>
+    <article class="card"><div class="emoji">3️⃣</div><h3>Lihat Hasil</h3><p>Setiap jawaban benar mendapat 10 poin. Di akhir, lihat jumlah jawaban benar dan coba lagi jika mau.</p></article>
+  </div>
+  <div class="card" style="margin-top:16px"><h3>🎯 Tujuan Pembelajaran</h3><p>Setelah menggunakan media ini, siswa diharapkan mampu memahami konsep dasar perkalian sebagai penjumlahan berulang serta menyelesaikan soal perkalian sederhana dengan percaya diri.</p><h3 style="margin-top:20px">💖 Pesan untukmu</h3><p>Setiap orang belajar dengan kecepatan yang berbeda. Tidak apa-apa jika belum benar semua. Terus mencoba, karena latihan membuatmu semakin hebat!</p></div>
+  <p style="text-align:center;margin-top:20px"><button class="btn blue" data-go="home">🏠 Kembali ke Beranda</button></p>
+</section>
+</main>
+<footer>🚀 Petualangan Perkalian · Media Pembelajaran Matematika Kelas 3 SD<br>Belajar dengan gembira, berlatih dengan percaya diri! ✨</footer>
+</div>
+<script>
+(function(){
+const app=document.getElementById('app');if(app.dataset.ready)return;app.dataset.ready='1';
+const $=id=>document.getElementById(id);
+function go(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.page===page));if(page==='materi')buildTable();window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+function buildTable(){const body=$('times-table').querySelector('tbody');if(body.children.length)return;for(let a=1;a<=10;a++){const tr=document.createElement('tr');const th=document.createElement('th');th.textContent=a;tr.appendChild(th);for(let b=1;b<=10;b++){const td=document.createElement('td');td.textContent=a*b;tr.appendChild(td)}body.appendChild(tr)}}
+let maxTable=5,questions=[],index=0,score=0,correct=0,locked=false;
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+document.querySelectorAll('#page-game .level').forEach(btn=>btn.addEventListener('click',()=>{maxTable=Number(btn.dataset.max);document.querySelectorAll('#page-game .level').forEach(b=>b.classList.toggle('active',b===btn))}));
+function makeQuestions(){const pool=[];for(let a=1;a<=maxTable;a++)for(let b=1;b<=10;b++)pool.push({a,b,answer:a*b});return shuffle(pool).slice(0,10)}
+function options(answer){const set=new Set([answer]);while(set.size<4){const n=Math.floor(Math.random()*10)+1;set.add(Math.max(1,answer+(Math.random()<.5?-n:n)))}return shuffle([...set])}
+function stats(){$('score').textContent=score;$('number').textContent=(index+(questions.length?1:0))+'/10';$('correct').textContent=correct}
+function start(){questions=makeQuestions();index=0;score=0;correct=0;locked=false;$('game-start').classList.add('hidden');$('game-result').classList.add('hidden');$('game-play').classList.remove('hidden');stats();render()}
+function render(){locked=false;const q=questions[index],progress=Math.round((index+1)*10);$('number').textContent=(index+1)+'/10';$('progress-label').textContent='Soal '+(index+1)+' dari 10';$('percent').textContent=progress+'%';$('bar').style.width=progress+'%';$('equation').textContent=q.a+' × '+q.b;$('feedback').textContent='';$('next-question').classList.add('hidden');$('answers').replaceChildren();options(q.answer).forEach(value=>{const b=document.createElement('button');b.type='button';b.className='answer';b.textContent=value;b.addEventListener('click',()=>check(value,b));$('answers').appendChild(b)})}
+function check(value,selected){if(locked)return;locked=true;const answer=questions[index].answer;$('answers').querySelectorAll('button').forEach(b=>{b.disabled=true;if(Number(b.textContent)===answer)b.classList.add('correct')});if(value===answer){score+=10;correct++;$('feedback').textContent='🎉 Hebat! Jawabanmu benar. +10 poin!';$('feedback').style.color='#16845d'}else{selected.classList.add('wrong');$('feedback').textContent='💪 Belum tepat. Jawaban yang benar adalah '+answer+'. Tetap semangat!';$('feedback').style.color='#bd5050'}stats();$('next-question').textContent=index===9?'Lihat Hasil 🏆':'Soal Berikutnya →';$('next-question').classList.remove('hidden')}
+function finish(){$('game-play').classList.add('hidden');$('game-result').classList.remove('hidden');$('number').textContent='10/10';$('bar').style.width='100%';$('percent').textContent='100%';$('final-score').textContent=score+'/100';$('result-correct').textContent='Kamu menjawab '+correct+' dari 10 soal dengan benar.';if(correct===10){$('trophy').textContent='🏆';$('result-title').textContent='Luar Biasa!';$('result-message').textContent='Sempurna! Kamu jagoan perkalian!'}else if(correct>=7){$('trophy').textContent='🌟';$('result-title').textContent='Kerja Bagus!';$('result-message').textContent='Kamu hebat! Terus berlatih agar makin mahir.'}else{$('trophy').textContent='🌱';$('result-title').textContent='Terus Berlatih!';$('result-message').textContent='Jangan menyerah. Pelajari materi lalu coba lagi!'}stats()}
+$('start-game').addEventListener('click',start);$('next-question').addEventListener('click',()=>{if(!locked)return;if(index===9)finish();else{index++;render()}});$('play-again').addEventListener('click',start);
+buildTable();
+})();
+</script>
+</body>
+</html>
